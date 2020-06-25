@@ -1,0 +1,194 @@
+@font-face {
+  font-family: "General";
+  src: url("./font/Nunito-ExtraLight.ttf");
+}
+@font-face {
+  font-family: "heading";
+  src: url("./font/Nunito-Bold.ttf");
+}
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: "General";
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+.header {
+  height: 60px;
+  width: 100%;
+}
+h1 {
+  margin: 0;
+  text-align: center;
+  font-family: "heading";
+  padding-top: 10px;
+}
+.budget-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 160px;
+  font-weight: 900;
+}
+.budget-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  height: 340px;
+  overflow-y: scroll;
+  padding-top: 10px;
+  font-weight: 900;
+}
+.exp-amount {
+  color: red;
+}
+.amount {
+  color: green;
+}
+.col {
+  width: 40%;
+  text-align: center;
+  text-transform: capitalize;
+}
+.col p {
+  font-size: 40px;
+  padding-top: 5px;
+  margin: 0;
+}
+.toggle {
+  width: 100%;
+  min-height: 40px;
+  text-align: end;
+}
+.toggle button {
+  border: none;
+  border-radius: 600px;
+  background: #04458f;
+  padding: 14px 20px;
+  color: #ffffff;
+  font-size: 30px;
+  margin: 10px 50px 0 0;
+  cursor: pointer;
+}
+/* modal form */
+.budget-form {
+  width: 100%;
+  min-height: 100px;
+}
+form {
+  margin: 10px 0 20px 10px;
+}
+input {
+  width: 50%;
+  padding: 8px 0;
+  border-radius: 6px;
+  border: 1px solid gray;
+  margin: 10px 0;
+  padding-left: 5px;
+}
+.budget-form button {
+  background: rgb(1, 83, 1);
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.expense-form {
+  width: 100%;
+  min-height: 100px;
+}
+.expense-form button {
+  background: red;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+/* The Modal (background) */
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  top: 20%;
+  left: 20%;
+  background-color: #fefefe;
+  width: 50%;
+  min-height: 300px;
+  animation-name: slideIn;
+  animation-duration: 0.4s;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+}
+.modal-header {
+  padding: 2px 16px;
+  border-bottom: 2px solid gray;
+  text-align: center;
+}
+.modal-body {
+  padding: 2px 16px;
+}
+
+/* Add Animation */
+@keyframes slideIn {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* @media screen and (max-width: 992px) {
+  .col-md {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .budget-section {
+    display: block;
+  }
+  .col-sm {
+    width: 100%;
+  }
+} */

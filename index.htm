@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>Budget App</h1>
+    </div>
+    <div class="budget-section">
+      <div class="budget col col-md col-sm">
+        <h2>budget</h2>
+        <img src="image/money-bag.svg" width="40" alt="" />
+        <p class="amount">$ 0</p>
+      </div>
+      <div class="expenses col col-md col-sm">
+        <h2>expenses</h2>
+        <img src="image/accounting.svg" width="40" alt="" />
+        <p class="exp-amount">$ 0</p>
+      </div>
+      <div class="balance col col-md col-sm">
+        <h2>balance</h2>
+        <img src="image/law.svg" width="40" alt="" />
+        <p class="amount">$ 0</p>
+      </div>
+    </div>
+    <div class="budget-list">
+      <div class="col">
+        <h4>expense title</h4>
+      </div>
+      <div class="col">
+        <h4>expense value</h4>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="toggle">
+      <button id="myBtn" type="button">+</button>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Budget Form</h2>
+        </div>
+        <div class="modal-body">
+          <div class="budget-form">
+            <form action="">
+              <label for=""> Make a budget</label> <br />
+              <input type="number" /> <br />
+              <button type="submit">Calculate</button>
+            </form>
+          </div>
+
+          <div class="expense-form">
+            <form action="">
+              <div class="">
+                <label for="">please enter your expense</label> <br />
+                <input type="text" />
+              </div>
+              <div class="">
+                <label for="">please enter expense amount</label> <br />
+                <input type="number" />
+              </div>
+              <button type="submit">Add expense</button>
+            </form>
+          </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <h3>Modal Footer</h3>
+        </div> -->
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

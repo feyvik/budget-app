@@ -118,8 +118,10 @@ input {
 #edite_delete img {
   cursor: pointer;
 }
-#edite_delete span {
-  margin-left: 10px;
+#edite_delete button {
+  margin-left: 1px;
+  background: none;
+  border: none;
 }
 .budget-form button {
   background: rgb(1, 83, 1);

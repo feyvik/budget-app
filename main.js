@@ -24,7 +24,7 @@ const expensesAmount = document.getElementById("expensesAmount");
 const expValue = document.getElementById("expValue");
 const displayExpenses = document.getElementById("displayExpenses");
 let id = 0;
-const details = [];
+let details = [];
 
 function getBudgetAmount(amount) {
   if (!amount) {
@@ -86,8 +86,8 @@ function displayExp(details) {
       <div id="expValueAmount" class="exp"><p> <span>$ </span> ${details[i].number}</p></div>
       <div id="edite_delete">
         <p>
-          <span> <img src="image/edit.svg" width="15" alt="" onclick="editExpDetails(${details[i].id})" /></span> 
-          <span><img src="image/trash.svg" width="15" alt="" onclick="deleteExpDetails(${details[i].id})"/></span>
+          <button> <img src="image/edit.svg" width="15" alt="" id="${details[i].id}" /></button> 
+          <button id="${details[i].id}" onclick="delExpenseDetails(this)"><img src="image/trash.svg" width="15" alt="" /></button>
         </p>
       </div>
     </div>
@@ -111,18 +111,15 @@ function updateBalance() {
     parseInt(budgetAmount.innerText) - parseInt(expensesAmount.innerText);
 }
 
-function deleteExpDetails(id) {
-  console.log(details);
-  // console.log(id);
-  // details.splice(id, 1);
-  // console.log(details.splice(id, 1));
-  for (i = 0; i < details.length; i++) {
-    details.splice(1, i);
-    console.log(i);
-    console.log(id);
-    console.log(details.splice(1, i));
-  }
+function delExpenseDetails(e) {
+  let id = parseInt(e.id);
+  console.log(parseInt(e.id));
+  let tempList = details.filter(function (item) {
+    return item.id !== id;
+  });
+  details = tempList;
   displayExp(details);
+  console.log(details);
 }
 
 function editExpDetails(id) {

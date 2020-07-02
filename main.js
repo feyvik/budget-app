@@ -113,13 +113,11 @@ function updateBalance() {
 
 function delExpenseDetails(e) {
   let id = parseInt(e.id);
-  console.log(parseInt(e.id));
-  let tempList = details.filter(function (item) {
+  details = details.filter(function (item) {
     return item.id !== id;
   });
-  details = tempList;
+  // details = tempList;
   displayExp(details);
-  console.log(details);
 }
 
 function editExpDetails(id) {

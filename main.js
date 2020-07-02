@@ -17,12 +17,16 @@ const amountInput = document.getElementById("number");
 const addForm = document.getElementById("addForm");
 const budgetAmount = document.getElementById("budgetAmount");
 const balanceAmount = document.getElementById("balanceAmount");
-const expName = document.getElementById("expName");
-const expNumber = document.getElementById("expNumber");
+
 const expForm = document.getElementById("expForm");
 const expensesAmount = document.getElementById("expensesAmount");
 const expValue = document.getElementById("expValue");
 const displayExpenses = document.getElementById("displayExpenses");
+const expenseForm = document.getElementById("expense-form");
+const budgetform = document.getElementById("budgetform");
+
+let expName = document.getElementById("expName");
+let expNumber = document.getElementById("expNumber");
 let id = 0;
 let details = [];
 
@@ -38,8 +42,8 @@ function getBudgetAmount(amount) {
   } else {
     budgetAmount.innerText = amount;
     balanceAmount.innerText = amount;
-    expForm.style.display = "block";
-    addForm.style.display = "none";
+    expenseForm.style.display = "block";
+    budgetform.style.display = "none";
     amountInput.value = "";
   }
 }
@@ -86,7 +90,7 @@ function displayExp(details) {
       <div id="expValueAmount" class="exp"><p> <span>$ </span> ${details[i].number}</p></div>
       <div id="edite_delete">
         <p>
-          <button> <img src="image/edit.svg" width="15" alt="" id="${details[i].id}" /></button> 
+          <button id="${details[i].id}" onclick="editExpDetails(this)"> <img src="image/edit.svg" width="15" alt=""  /></button> 
           <button id="${details[i].id}" onclick="delExpenseDetails(this)"><img src="image/trash.svg" width="15" alt="" /></button>
         </p>
       </div>
@@ -116,12 +120,33 @@ function delExpenseDetails(e) {
   details = details.filter(function (item) {
     return item.id !== id;
   });
-  // details = tempList;
   displayExp(details);
 }
 
-function editExpDetails(id) {
-  console.log(id);
+function editExpDetails(e) {
+  let id = parseInt(e.id);
+  showInput = details.filter(function (item) {
+    return item.id == id;
+  });
+
+  showInputValue(showInput[0].name, showInput[0].number, showInput[0].id);
+  displayExp(details);
+}
+
+function showInputValue(name, number, id) {
+  expName.value = name;
+  expNumber.value = number;
+
+  details = details.filter(function (item) {
+    return item.id !== id;
+  });
+
+  modal.style.display = "block";
+}
+
+function callBudget() {
+  budgetform.style.display = "block";
+  expenseForm.style.display = "none";
 }
 
 expForm.addEventListener("submit", (e) => {

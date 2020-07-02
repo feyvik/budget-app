@@ -54,7 +54,7 @@
           <h2>Budget Form</h2>
         </div>
         <div class="modal-body">
-          <div class="budget-form">
+          <div class="budget-form" id="budgetform">
             <form id="addForm">
               <label for=""> Make a budget</label> <br />
               <input type="number" id="number" /> <br />
@@ -62,7 +62,7 @@
             </form>
           </div>
 
-          <div class="expense-form">
+          <div class="expense-form" id="expense-form">
             <form action="" id="expForm">
               <div class="">
                 <label for="">please enter your expense</label> <br />
@@ -73,6 +73,9 @@
                 <input type="number" id="expNumber" />
               </div>
               <button type="submit">Add expense</button>
+              <button onclick="callBudget()" id="bug">
+                Back to add budget ->
+              </button>
             </form>
           </div>
         </div>

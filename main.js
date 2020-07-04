@@ -2,6 +2,8 @@ const modal = document.getElementById("myModal");
 const btn = document.getElementById("myBtn");
 const span = document.getElementsByClassName("close")[0];
 btn.onclick = function () {
+  expName.value = "";
+  expNumber.value = "";
   modal.style.display = "block";
 };
 span.onclick = function () {
@@ -90,8 +92,8 @@ function displayExp(details) {
       <div id="expValueAmount" class="exp"><p> <span>$ </span> ${details[i].number}</p></div>
       <div id="edite_delete">
         <p>
-          <button id="${details[i].id}" onclick="editExpDetails(this)"> <img src="image/edit.svg" width="15" alt=""  /></button> 
-          <button id="${details[i].id}" onclick="delExpenseDetails(this)"><img src="image/trash.svg" width="15" alt="" /></button>
+          <button id="${details[i].id}" onclick="editExpDetails(${details[i].id})"> <img src="image/edit.svg" width="15" alt=""  /></button> 
+          <button id="${details[i].id}" onclick="delExpenseDetails(${details[i].id})"><img src="image/trash.svg" width="15" alt="" /></button>
         </p>
       </div>
     </div>
@@ -115,32 +117,30 @@ function updateBalance() {
     parseInt(budgetAmount.innerText) - parseInt(expensesAmount.innerText);
 }
 
-function delExpenseDetails(e) {
-  let id = parseInt(e.id);
-  details = details.filter(function (item) {
-    return item.id !== id;
-  });
+function delExpenseDetails(id) {
+  for (i = 0; i < details.length; i++) {
+    let item = details[i];
+    if (item.id === id) {
+      const index = details.indexOf(item);
+      details.splice(index, 1);
+    }
+  }
   displayExp(details);
 }
 
-function editExpDetails(e) {
-  let id = parseInt(e.id);
-  showInput = details.filter(function (item) {
-    return item.id == id;
-  });
-
-  showInputValue(showInput[0].name, showInput[0].number, showInput[0].id);
+function editExpDetails(id) {
+  for (i = 0; i < details.length; i++) {
+    let item = details[i];
+    if (item.id === id) {
+      showInputValue(item.name, item.number, item.id);
+    }
+  }
   displayExp(details);
 }
 
 function showInputValue(name, number, id) {
   expName.value = name;
   expNumber.value = number;
-
-  details = details.filter(function (item) {
-    return item.id !== id;
-  });
-
   modal.style.display = "block";
 }
 

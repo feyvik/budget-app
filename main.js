@@ -118,23 +118,17 @@ function updateBalance() {
 }
 
 function delExpenseDetails(id) {
-  for (i = 0; i < details.length; i++) {
-    let item = details[i];
-    if (item.id === id) {
-      const index = details.indexOf(item);
-      details.splice(index, 1);
-    }
-  }
+  let index = details.findIndex((item) => item.id === id);
+  details.splice(index, 1);
   displayExp(details);
 }
 
 function editExpDetails(id) {
-  for (i = 0; i < details.length; i++) {
-    let item = details[i];
+  details.findIndex((item) => {
     if (item.id === id) {
       showInputValue(item.name, item.number, item.id);
     }
-  }
+  });
   displayExp(details);
 }
 

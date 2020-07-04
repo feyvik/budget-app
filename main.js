@@ -118,8 +118,8 @@ function updateBalance() {
 }
 
 function delExpenseDetails(id) {
-  // let index = details.findIndex((item) => item.id === id);
-  details.splice(id, 1);
+  let index = details.findIndex((item) => item.id === id);
+  details.splice(index, 1);
   displayExp(details);
 }
 
@@ -132,7 +132,7 @@ function editExpDetails(id) {
   displayExp(details);
 }
 
-function showInputValue(name, number, id) {
+function showInputValue(name, number) {
   expName.value = name;
   expNumber.value = number;
   modal.style.display = "block";

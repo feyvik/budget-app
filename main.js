@@ -156,10 +156,12 @@ function callBudget() {
   budgetform.style.display = "block";
   expenseForm.style.display = "none";
 }
+
 saveEdit.addEventListener("submit", (e) => {
   e.preventDefault();
   getExpValue(editExpName.value, editExpNumber.value, saveEdit.children[2].id);
 });
+
 expForm.addEventListener("submit", (e) => {
   e.preventDefault();
   addExpenses(expName.value, expNumber.value);

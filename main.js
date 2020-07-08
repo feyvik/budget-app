@@ -4,6 +4,8 @@ const span = document.getElementsByClassName("close")[0];
 btn.onclick = function () {
   expName.value = "";
   expNumber.value = "";
+  expenseForm.style.display = "block";
+  editForm.style.display = "none";
   modal.style.display = "block";
 };
 span.onclick = function () {
@@ -19,6 +21,11 @@ const amountInput = document.getElementById("number");
 const addForm = document.getElementById("addForm");
 const budgetAmount = document.getElementById("budgetAmount");
 const balanceAmount = document.getElementById("balanceAmount");
+
+const editForm = document.getElementById("editForm");
+const saveEdit = document.getElementById("saveEdit");
+const editExpValue = document.getElementById("editExpValue");
+const editExpNumber = document.getElementById("editExpNumber");
 
 const expForm = document.getElementById("expForm");
 const expensesAmount = document.getElementById("expensesAmount");
@@ -46,6 +53,7 @@ function getBudgetAmount(amount) {
     balanceAmount.innerText = amount;
     expenseForm.style.display = "block";
     budgetform.style.display = "none";
+    editForm.style.display = "none";
     amountInput.value = "";
   }
 }
@@ -99,8 +107,8 @@ function displayExp(details) {
     </div>
   `;
   }
-  displayExpenses.style.display = "block";
   calcExpenses();
+  displayExpenses.style.display = "block";
 }
 
 function calcExpenses() {
@@ -124,25 +132,34 @@ function delExpenseDetails(id) {
 }
 
 function editExpDetails(id) {
+  expenseForm.style.display = "none";
+  budgetform.style.display = "none";
+  editForm.style.display = "block";
   details.findIndex((item) => {
     if (item.id === id) {
-      showInputValue(item.name, item.number, item.id);
+      editExpName.value = item.name;
+      editExpNumber.value = item.number;
+      saveEdit.children[2].id = item.id;
+      modal.style.display = "block";
     }
   });
-  displayExp(details);
 }
 
-function showInputValue(name, number) {
-  expName.value = name;
-  expNumber.value = number;
-  modal.style.display = "block";
+function getExpValue(editExpName, editExpNumber, id) {
+  edited = details.findIndex((obj) => obj.id == id);
+  details[edited].name = editExpName;
+  details[edited].number = parseInt(editExpNumber);
+  displayExp(details);
 }
 
 function callBudget() {
   budgetform.style.display = "block";
   expenseForm.style.display = "none";
 }
-
+saveEdit.addEventListener("submit", (e) => {
+  e.preventDefault();
+  getExpValue(editExpName.value, editExpNumber.value, saveEdit.children[2].id);
+});
 expForm.addEventListener("submit", (e) => {
   e.preventDefault();
   addExpenses(expName.value, expNumber.value);

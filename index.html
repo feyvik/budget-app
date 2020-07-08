@@ -72,10 +72,24 @@
                 <label for="">please enter expense amount</label> <br />
                 <input type="number" id="expNumber" />
               </div>
-              <button type="submit">Add expense</button>
-              <button onclick="callBudget()" id="bug">
-                Back to add budget ->
-              </button>
+              <button type="submit" id="submitExpen">Add expense</button>
+            </form>
+            <button onclick="callBudget()" id="bug">
+              Back to add budget ->
+            </button>
+          </div>
+
+          <div class="edit-form" id="editForm">
+            <form action="" id="saveEdit">
+              <div class="">
+                <label for="">Edit your expense</label> <br />
+                <input type="text" id="editExpName" />
+              </div>
+              <div class="">
+                <label for="">Edit expense amount</label> <br />
+                <input type="number" id="editExpNumber" />
+              </div>
+              <button type="submit">Save changes</button>
             </form>
           </div>
         </div>
